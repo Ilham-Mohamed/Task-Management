@@ -1,6 +1,6 @@
 
 
-	<h1>Laravel Todo Task Management Application</h1>
+	Laravel Todo Task Management Application
 
 
 	<h1>Laravel Todo Task Management Application</h1>
