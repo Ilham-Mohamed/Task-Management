@@ -1,10 +1,8 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Laravel Todo Task Management Application</title>
-</head>
-<body>
+
+	<h1>Laravel Todo Task Management Application</h1>
+
+
 	<h1>Laravel Todo Task Management Application</h1>
 	<p>This is a Todo task management application built with Laravel. With this application, users can create, edit, and delete tasks.</p>
 
@@ -49,5 +47,4 @@
 
 	<h2>License</h2>
 	<p>This application is open-source software licensed under the <a href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
-</body>
-</html>
+
