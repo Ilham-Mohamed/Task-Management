@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Task;
 use Validate;
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
@@ -14,7 +15,26 @@ class TaskController extends Controller
     public function index()
     {
         //
+   
+
         $tasks = Task::orderBy('id', 'desc')->get();
+        $secondDate = Carbon::now();
+
+        foreach($tasks as $task){
+            $firstDate = Carbon::parse($task->duedate);
+            if ($firstDate->lessThanOrEqualTo($secondDate)) {
+                $task->due = "false";
+            } else {
+                $task->due = "true";
+            }
+
+        }
+
+
+        
+        // $tasks->due = true;
+       
+
         return view('index', compact('tasks'));
     }
 
