@@ -1,8 +1,8 @@
-Laravel Todo Task Management Application
-This is a Todo task management application built with Laravel. With this application, users can create, edit, and delete tasks.
+Laravel Task Management Application
+This is a Task management application built with Laravel. With this application, users can create, edit, and delete tasks.
 
 Requirements
-PHP >= 7.4
+PHP >= 8
 Composer
 MySQL >= 5.7
 Installation
@@ -25,11 +25,11 @@ Copy code
 cp .env.example .env
 Update the .env file with your database credentials:
 
-dotenv
+.env
 Copy code
-DB_DATABASE=your_database_name
-DB_USERNAME=your_database_username
-DB_PASSWORD=your_database_password
+DB_DATABASE=taskmngapp
+DB_USERNAME=root
+DB_PASSWORD=
 Generate a new application key:
 
 bash
@@ -45,7 +45,9 @@ Start the development server:
 bash
 Copy code
 php artisan serve
-Visit http://localhost:8000 in your browser to view the application.
+Visit http://127.0.0.1:8000 in your browser to view the application.
 
 Usage
 To use the application, register a new user account, then log in to create, edit, and delete tasks.
+
+
