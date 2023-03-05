@@ -47,11 +47,12 @@ Copy code
 php artisan serve
 Visit http://127.0.0.1:8000 in your browser to view the application.
 
-Usage
+
 To use the application, register a new user account, then log in to create, edit, and delete tasks.
 
 Gmail Configuration
 
 I would like to take a moment to inform you that third-party access is not allowed on Google Gmail account.
 
-
+Sample Indexpage of My localhost
+https://drive.google.com/file/d/155x3r9F7iDzGGknWHNmptt7bp9XU22GN/view?usp=sharing
