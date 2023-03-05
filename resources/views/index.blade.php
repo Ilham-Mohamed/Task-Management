@@ -29,11 +29,11 @@
             <div class="card-body">
                 <div class="card-text">
                     <div class="float-start">
-                    @if ($task->status == "completed")
-                        <del>{{$task->description}}</del>
-                    @else
-                        {{$task->description}}   
-                    @endif
+                        @if ($task->status == "completed")
+                            <del>{{$task->description}}</del>
+                        @else
+                            {{$task->description}}   
+                        @endif
                         <br>
                         @if ($task->status == "completed")
                             <span class="badge rounded-pill text-bg-success">
@@ -44,9 +44,14 @@
                                 Not Completed
                             </span>
                         @endif
-                        
+                    
                         <small>Last Updated - {{$task->updated_at->diffForHumans()}}</small><br>
-                        <label>Due Date :</label> {{$task->duedate}}<br>
+
+                        @if ($task->due == "true" && $task->status = "completed")
+                            <label>Due Date :</label> {{$task->duedate}}<br>
+                        @else
+                            <label class="badge rounded-pill text-bg-danger mt-2" >Due Date Expired :</label> {{$task->duedate}}<br>
+                        @endif
                     </div>
                     <div class="float-end">
                         <a href="{{ route('task.edit', $task->id)}}" class="btn btn-success">
