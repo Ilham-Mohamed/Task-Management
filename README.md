@@ -10,7 +10,7 @@ Clone the repository:
 
 bash
 Copy code
-git clone https://github.com/your-username/laravel-todo.git
+git clone https://github.com/Ilham-Mohamed/Cyntrek-Technical-Assessment.git
 Install dependencies:
 
 bash
