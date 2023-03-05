@@ -50,4 +50,8 @@ Visit http://127.0.0.1:8000 in your browser to view the application.
 Usage
 To use the application, register a new user account, then log in to create, edit, and delete tasks.
 
+Gmail Configuration
+
+I would like to take a moment to inform you that third-party access is not allowed on Google Gmail account.
+
 
