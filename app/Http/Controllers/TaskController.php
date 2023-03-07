@@ -12,28 +12,28 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-   
+        $todayDate = Carbon::now();
+        $tasks = Task::when($request->duedate != null, function ($req) use ($request){
+                return $req->where('duedate', $request->duedate);
+            })
+            ->when($request->status != null, function ($req) use ($request){
+                return $req->where('status', $request->status);
+            })
+            ->orderBy('id', 'desc')->get();
 
-        $tasks = Task::orderBy('id', 'desc')->get();
-        $secondDate = Carbon::now();
 
         foreach($tasks as $task){
-            $firstDate = Carbon::parse($task->duedate);
-            if ($firstDate->lessThanOrEqualTo($secondDate)) {
+            $dueDate = Carbon::parse($task->duedate);
+            if ($todayDate->lessThanOrEqualTo($dueDate)) {
                 $task->due = "false";
-            } else {
+            } 
+            else {
                 $task->due = "true";
             }
 
         }
-
-
-        
-        // $tasks->due = true;
-       
 
         return view('index', compact('tasks'));
     }
