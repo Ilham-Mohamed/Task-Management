@@ -13,7 +13,29 @@
         </div>
         <div class="clearfix"></div>
     </div>
-    
+    <form action="" method="GET">
+        @csrf
+        <div class="row">
+            <div class="col-md-3">
+                <label>Filter By DueDate </label>
+                <input type="date" class = "form-control" name="duedate" value="{{ Request::get('duedate') ?? date('Y-m-d')}}" />
+            </div>
+            <div class="col-md-3">
+                <label >Filter By Status </label>
+                <select name="status" id="status" class="form-select">
+                    <option value="">Select Status</option>
+                    <option value="completed" {{Request::get('status') == 'completed' ? 'selected' : '' }}> Completed</option>
+                    <option value="notcompleted" {{Request::get('status') == 'notcompleted' ? 'selected' : '' }}> Not Completed</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <br/>
+                <button type = "submit" class="btn btn-primary">Filter</button>
+            </div>
+        </div>
+
+    </form>
+    <br/>
     @foreach($tasks as $task)
         <div class="card">
             <div class="card-header">
@@ -47,10 +69,10 @@
                     
                         <small>Last Updated - {{$task->updated_at->diffForHumans()}}</small><br>
 
-                        @if ($task->due == "true" && $task->status = "completed")
-                            <label>Due Date :</label> {{$task->duedate}}<br>
-                        @else
+                        @if ($task->due == "true" && $task->status == "notcompleted")
                             <label class="badge rounded-pill text-bg-danger mt-2" >Due Date Expired :</label> {{$task->duedate}}<br>
+                        @else
+                            <label>Due Date :</label> {{$task->duedate}}<br>
                         @endif
                     </div>
                     <div class="float-end">
