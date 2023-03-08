@@ -35,7 +35,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="duedate">Due Date</label>
-                <input required type="date" class="form-control" name="duedate" id="duedate"> 
+                <input required type="date" class="form-control" name="duedate" id="duedate" value="{{date('Y-m-d') }}"> 
             </div>
 
             <a href="{{ route('index') }}" class="btn btn-secondary mr-2"><i class="fa fa-arrow-left"></i> Cancel</a>
