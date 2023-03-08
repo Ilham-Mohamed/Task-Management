@@ -76,6 +76,9 @@
                         @endif
                     </div>
                     <div class="float-end">
+                        <!-- <a href="{{ route('task.show', $task->id)}}" class="btn btn-info">
+                           <i class="fa fa-eye"></i> Show
+                        </a> -->
                         <a href="{{ route('task.edit', $task->id)}}" class="btn btn-success">
                            <i class="fa fa-edit"></i> Edit
                         </a>
