@@ -18,7 +18,7 @@
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input required type="text" name="title" class="form-control" id="title" aria-describedby="emailHelp">
+                <input required type="text" name="title" class="form-control" id="title">
              
             </div>
             <div class="mb-3">
