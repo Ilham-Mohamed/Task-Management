@@ -18,11 +18,12 @@
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" name="title" class="form-control" id="title" aria-describedby="emailHelp">
+                <input required type="text" name="title" class="form-control" id="title" aria-describedby="emailHelp">
+             
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea type="text" class="form-control" name="description" id="description" rows="5"></textarea>
+                <textarea required type="text" class="form-control" name="description" id="description" rows="5"></textarea>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="status">Status</label>
@@ -34,7 +35,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="duedate">Due Date</label>
-                <input type="date" class="form-control" name="duedate" id="duedate"> 
+                <input required type="date" class="form-control" name="duedate" id="duedate"> 
             </div>
 
             <a href="{{ route('index') }}" class="btn btn-secondary mr-2"><i class="fa fa-arrow-left"></i> Cancel</a>
