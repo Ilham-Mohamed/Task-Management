@@ -17,25 +17,19 @@
     <body class="antialiased">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid ps-5">
-                <a class="navbar-brand" href="{{ route('index') }}">TaskApp</a>
+                <a class="navbar-brand" href="{{route('home')}}">Home</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Home</a>
+                            <a class="nav-link active" aria-current="page" href="{{route('login')}}">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('task.create') }}">Create New Task</a>
+                            <a class="nav-link" href="{{route('register')}}">Register</a>
                         </li>
                     </ul>
-                    <button type="submit" class="btn btn-info">
-                        <a class="nav-link active" aria-current="page" href="{{ route('signout') }}">
-                            <i class="fa fa-sign-out"></i> LogOut
-                        </a>
-                    </button>
-                    
                 </div>
             </div>
         </nav>

@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-md-3">
                 <label>Filter By DueDate </label>
-                <input type="date" class = "form-control" name="duedate" value="{{ Request::get('duedate') ?? date('Y-m-d')}}" />
+                <input type="date" class = "form-control" name="duedate" value="{{ Request::get('duedate')}}" />
             </div>
             <div class="col-md-3">
                 <label >Filter By Status </label>

@@ -1,7 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Mail\OverdueTask;
+use App\Mail\SignUp;
 use App\Models\Task;
+use App\Models\User;
+use App\Notifications\TaskCompleted;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Validate;
 use Carbon\Carbon;
 
@@ -14,6 +21,7 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
+        $user = Auth::user();
         $todayDate = Carbon::now();
         $tasks = Task::when($request->duedate != null, function ($req) use ($request){
                 return $req->where('duedate', $request->duedate);
@@ -22,19 +30,19 @@ class TaskController extends Controller
                 return $req->where('status', $request->status);
             })
             ->orderBy('id', 'desc')->get();
+            
+        // $task = $user->task()->get();
 
 
         foreach($tasks as $task){
             $dueDate = Carbon::parse($task->duedate);
-            if ($todayDate->lessThanOrEqualTo($dueDate)) {
-                $task->due = "false";
-            } 
-            else {
-                $task->due = "true";
+            $task->due = $todayDate->lessThanOrEqualTo($dueDate) ? false : true;
+            if ($task->due == "true" && $task->status == "notcompleted"){
+                Artisan::call('task:overdue-mail');
             }
-
         }
-
+        
+        
         return view('index', compact('tasks'));
     }
 
@@ -75,6 +83,14 @@ class TaskController extends Controller
         $task->duedate = $request->duedate;
 
         $task->save();
+
+        $user = Auth::user();
+        Mail::to($user->email)->send(new SignUp($task));
+
+        if($task->status == 'completed'){
+            $user->notify(new TaskCompleted);
+        }
+
         return redirect()->route('index');
     }
 
@@ -119,6 +135,13 @@ class TaskController extends Controller
         $task->description = $request->description;
         $task->status = $request->status;
         $task->duedate = $request->duedate;
+        
+        if($task->status == 'completed'){
+                $user = Auth::user();
+                $user->notify(new TaskCompleted);
+        }
+
+        
 
         $task->save();
         return redirect()->route('index');

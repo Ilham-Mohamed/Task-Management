@@ -19,11 +19,11 @@
             @method('PUT')
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" name="title" class="form-control" id="title" value="{{ $task->title }}">
+                <input required type="text" name="title" class="form-control" id="title" value="{{ $task->title }}">
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea type="text" class="form-control" name="description" id="description" rows="5" >{{ $task->description }}</textarea>
+                <textarea required type="text" class="form-control" name="description" id="description" rows="5" >{{ $task->description }}</textarea>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="status">Status</label>

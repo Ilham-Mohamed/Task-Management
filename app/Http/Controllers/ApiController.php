@@ -78,14 +78,20 @@ class ApiController extends Controller
         //
         $task = Task::findorFail($id);
         
-        return response()->json([
-            'Task' => $task
-        ]);
+        if($task){
+            return response()->json([
+                'Task' => $task
+            ]);
+        }
+        else{
+            return response()->json([
+                'status' => 404,
+                'message' => 'No Task Found'
+            ], 404);
+        }
+        
+        
     }
-    // public function show(Task $task)
-    // {
-    //     return TaskResource::make($task);
-    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -114,15 +120,17 @@ class ApiController extends Controller
             ]);
         }
         else{
-            $task = Task::create([
-                'title' => $request->title,
-                'description' => $request->description,
-                'status' => $request->status,
-                'duedate' => $request->duedate
-            ]);
+            $task = Task::findorFail($id);
+            
             if($task){
+                $task->update([
+                    'title' => $request->title,
+                    'description' => $request->description,
+                    'status' => $request->status,
+                    'duedate' => $request->duedate
+                ]);
                 return response()->json([
-                    'message' => 'Task Created Successfully!'
+                    'message' => 'Task Updated Successfully!'
                 ]);
             }
             else{
@@ -140,8 +148,18 @@ class ApiController extends Controller
     {
         //
         $task = Task::findorFail($id);
-        return response()->json([
-            'message' => "Successfully Deleted!"
-        ]);
+        if($task){
+
+            $task->delete();
+            return response()->json([
+                'message' => "Task Deleted Successfully!"
+            ]);
+        }
+        else{
+            return response()->json([
+                'message' => 'Something went wrong'
+            ]);
+        }
+        
     }
 }

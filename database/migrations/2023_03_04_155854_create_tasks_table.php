@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('title');
-            $table->text('description');
+            $table->string('description');
             $table->enum('status',['completed', 'notcompleted']);
             $table->string('duedate');
-
+            $table->boolean('sent')->default(false);
+            // $table->unsignedBigInteger('user_id');
+            // $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
