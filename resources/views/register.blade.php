@@ -42,6 +42,13 @@
                     <span class="text-danger">{{ $errors->first('email')}}</span>
                 @endif
             </div>
+            div class="mb-3">
+                <label  class="form-label">Phone Number</label>
+                <input type="phonenumber" class="form-control" name="phonenumber" >
+                @if($errors->has('phonenumber'))
+                    <span class="text-danger">{{ $errors->first('phonenumber')}}</span>
+                @endif
+            </div>
             <div class="mb-3">
                 <label class="form-label">Password</label>
                 <input type="password" class="form-control" name="password" >
