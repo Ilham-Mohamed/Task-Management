@@ -10,7 +10,7 @@ Installation
 Clone the repository:
 bash
 Copy code
-git clone https://github.com/Ilham-Mohamed/Cyntrek-Technical-Assessment.git
+git clone https://github.com/Ilham-Mohamed/Task-Management.git
 
 Install dependencies:
 bash
